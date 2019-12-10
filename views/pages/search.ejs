@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <% include ../partials/header.ejs %>
+    <script src="client.js"></script>
+</head>
+<body>
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>RB Places</h1>
+            <p class="lead">Where people in Rexburg, Idaho help each other by reviewing local places to visit.</p>
+        </div>
+    </header>
+    <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+    <h2>See All Places</h2>
+    <button onclick="displayAll()">See All</button>
+    <ul id="allplaces">
+
+    </ul>
+    <a href="/">Home</a>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

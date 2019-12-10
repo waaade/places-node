@@ -1,16 +1,9 @@
 function displayAll() {
-    fetch('/seeall', {method: 'GET'})
-    .then(function(response) {
-        if(response.ok) {
-            return response.json();
-            console.log("Hi");
+    $.get("/seeall", function(data) {
+        for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            $("#allplaces").append("<li>" + item.name + "</li>");
         }
-        throw new Error('Request failed.');
+        
     })
-    .then(function(data) {
-        document.getElementById('allplaces').innerHTML = data[0];
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
 }

@@ -23,13 +23,18 @@ express()
         }
         console.log("Back from DB with result:");
         console.log(result.rows);
+        res.json(result.rows);
     })})
+    .get('/search', (req, res) => res.render('pages/search'))
     .get('/seeall', function(req, res){
       pool.query('SELECT * FROM places', function(err, result) {
         if (err) {
           console.log("Error in query: ")
           console.log(err);
-        } 
+        }
+        console.log("Back from DB with result:");
+        console.log(result.rows);
+        res.json(result.rows); 
       })
     })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
