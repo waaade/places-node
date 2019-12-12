@@ -38,7 +38,7 @@ express()
     })
     .get('/searchbyname', function(req, res){
       var name = req.query.name;
-      var sql = 'SELECT * FROM places WHERE name ILIKE ' + name;
+      var sql = "SELECT * FROM places WHERE name ILIKE '" + name + "'";
       pool.query(sql, function(err, result) {
         if (err) {
           console.log("Error in query: ")
