@@ -47,4 +47,28 @@ express()
         res.json(result.rows);
       })
     })
+    .get('/searchbytype', function(req, res) {
+      var type = req.query.type;
+      var sql = "SELECT * FROM places WHERE places_type = (SELECT types_id FROM types WHERE name = '" + type + "')";
+      pool.query(sql, function(err, result) {
+        if (err) {
+          console.log("Error in query: ");
+          console.log(err);
+        }
+        res.json(result.rows);
+      })
+    })
+    .get('/reviews', function(req, res){
+      var place = req.query.id;
+      var sql = "SELECT * FROM reviews WHERE place = '" + place + "'";
+      pool.query(sql, function(err, result) {
+        if (err) {
+          console.log("Error in query: ")
+          console.log(err);
+        }
+        console.log("Back from DB with result:");
+        console.log(result.rows);
+        res.json(result.rows);
+    })
+    })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

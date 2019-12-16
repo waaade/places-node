@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Search Places - RB Places</title>
     <% include ../partials/header.ejs %>
     <script src="client.js"></script>
 </head>
@@ -17,24 +17,38 @@
     </header>
     <div class="container">
             <div class="row">
-              <div class="col-lg-8 mx-auto">
+              <div class="col">
     <h2>Search By Name</h2>
     <input type="text" id="placename" size="30" placeholder="Name of store, restaurant, etc...">
-    <button onclick="nameSearch()">Search</button><br>
-    <span id="nameresults">
-    </span><br>
-    <a href="/">Home</a>
-    </div>
-    </div>
-    </div>
+    <button onclick="nameSearch()">Search</button>
+              </div>
+              <div class ="col">
+             
+    <h2>Or, Search By Category</h2>
+    <select id="type">
+        <option value="Parks/Trails">Parks/Trails</option>
+        <option value="Resturants">Resturants</option>
+        <option value="Recreation">Recreation</option>
+        <option value="Stores">Stores</option>
+    </select>
+    <button onclick="typeSearch()">Search</button><br>
+</div>
+</div>
+</div>
+    <div id="results">
+        <h3>Results Will Appear Here</h3> 
+    </div><br>
+    
     <div class="container">
             <div class="row">
-              <div class="col-lg-8 mx-auto">
-    <h2>See All Places</h2>
-    <button onclick="displayAll()">See All</button>
-    <p id="allplaces">
+              <div class="col">
+    
+    <h3>See All Places</h3>
+    <p>Click the button see a list of every Place we have so far. To get more info, just type its name into the search bar above.</p>
+    <button onclick="displayAll()">See All Places</button>
+    <ul id="allplaces">
 
-    </p>
+    </ul>
     <a href="/">Home</a>
     </div>
     </div>
