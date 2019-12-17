@@ -95,6 +95,6 @@ function submitReview() {
     const placeid = $("#placeid").val();
     const comment = $("#comment").val();
     $.get("/addreview", {score:score, placeid:placeid, comment:comment}, function(data){
-        
+
     });
 }
