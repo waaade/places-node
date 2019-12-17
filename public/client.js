@@ -11,6 +11,7 @@ function displayAll() {
 function nameSearch() {
     var name = $("#placename").val();
     $("#results").empty();
+    $("#review").hide();
     $.get("/searchbyname", {name:name}, function(data) {
         if (data.length == 0) {
             $("#results").append("<h4>No Results!</h4>");
@@ -70,5 +71,30 @@ function displayReviews(id, name) {
                 "<br>Score: " + item.score + "/5<br>" + item.comment + "<br></div>")
             }
         }
+        $("#results").append("<br><button onclick='readyReviewForm(" + id + ")'>Leave a Review of " + name + "</button><br>");
     })
+}
+
+function submitPlace() {
+    const name = $("#name").val();
+    const address = $("#address").val();
+    var phone = $("#phone").val();
+    var type = $("#type").val();
+    $.get("/addplace", {name:name, type:type, address:address, phone:phone, type:type}, function(data) {
+        
+    });
+}
+
+function readyReviewForm(id) {
+    $("#review").show();
+    $("#placeid").val(id);
+}
+
+function submitReview() {
+    const score = $("#score").val();
+    const placeid = $("#placeid").val();
+    const comment = $("#comment").val();
+    $.get("/addreview", {score:score, placeid:placeid, comment:comment}, function(data){
+        
+    });
 }

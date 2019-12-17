@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Submit Content - RB Places</title>
+    <% include ../partials/header.ejs %>
+    <script src="client.js"></script>
+</head>
+<body>
+        <header class="bg-primary text-white">
+                <div class="container text-center">
+                    <h1>RB Places</h1>
+                    <p class="lead">Where people in Rexburg, Idaho help each other by reviewing local places to visit.</p>
+                </div>
+            </header>
+            <div class="container">
+                    <div class="row">
+                      <div class="col">
+            
+            <h2>Add a Place</h2>
+            <form id="placeform">
+                Place Name: <input type="text" id="name" required><br>
+                Address: <input type="text" id="address" required><br>
+                Phone: (optional) (Enter without dashes, e.g. 2081111111) <input type="number" id="phone" max=9999999999><br>
+                Type:<select id="type">
+                        <option value="Parks/Trails">Parks/Trails</option>
+                        <option value="Resturants">Resturants</option>
+                        <option value="Recreation">Recreation</option>
+                        <option value="Stores">Stores</option>
+                    </select><br>
+                <button onclick="submitPlace()">Submit</button>
+            </form>
+            <h4><a href="/search">Search the list of Places and leave reviews</a></h4>
+            <a href="/">Home</a>
+            </div>
+            </div>
+            </div>
+    
+</body>
+</html>

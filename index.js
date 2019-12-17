@@ -25,6 +25,7 @@ express()
         res.json(result.rows);
     })})
     .get('/search', (req, res) => res.render('pages/search')) //The search page
+    .get('/submit', (req, res) => res.render('pages/submit')) //The submit page
     .get('/seeall', function(req, res){ //Get all the places
       pool.query('SELECT * FROM places', function(err, result) {
         if (err) {
@@ -70,5 +71,47 @@ express()
         console.log(result.rows);
         res.json(result.rows);
     })
+    })
+    .get('/addplace', function(req, res){
+      var name = req.query.name;
+      var type = req.query.type;
+      var address = req.query.address;
+      var phone = req.query.phone;
+      pool.query(("SELECT types_id FROM types WHERE name = '" + type + "'"), function(err, result) {
+        if (err) {
+          console.log("Error in query: ")
+          console.log(err);
+        }
+        type = result.rows[0].types_id;
+        console.log(type);
+        const sql = "INSERT INTO places(places_type, name, phone, address) VALUES ($1, $2, $3, $4)";
+        const values = [type, name, phone, address];
+        pool.query(sql, values, function(err, result) {
+          if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+          }
+          else {
+            console.log("Yay");
+          }
+        }) 
+      })
+    })
+    .get('/addreview', function(req, res){
+      var score = req.query.score;
+      var comment = req.query.comment;
+      var user = 1;
+      var place = req.query.placeid;
+      const sql = "INSERT INTO reviews(place, reviews_user, score, comment) VALUES ($1, $2, $3, $4)";
+      const values = [place, user, score, comment];
+      pool.query(sql, values, function(err, result) {
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+          }
+          else {
+            console.log("Yay");
+          } 
+      })
     })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
